@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Book, ArrowRight, Code, Search, Zap, Shield, Globe, Smartphone, Monitor, Headphones, Users, Trophy, Clock, CheckCircle, Star, Github, ExternalLink, Download, PlayCircle, FileText, Settings, BarChart3, Lock, Cpu, Database, CloudUpload } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -175,7 +176,7 @@ const Index = () => {
             <p className="text-muted-foreground mb-4">Configure webhooks to receive real-time updates:</p>
             <div className="bg-slate-900 text-slate-100 rounded-lg p-6 font-mono text-sm">
               <div className="text-slate-400 mb-2">// Webhook endpoint example</div>
-              <div>app.post('/webhook', (req, res) => {`{`}</div>
+              <div>app.post('/webhook', (req, res) = {`{`}</div>
               <div className="ml-4">const event = req.body;</div>
               <div className="ml-4 mt-2">if (event.type === 'message.delivered') {`{`}</div>
               <div className="ml-8">console.log('Message delivered:', event.data);</div>
@@ -221,15 +222,20 @@ const Index = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16">
+              <Link to="/docs/general/get-started">
+
             <Button size="lg" className="text-lg px-10 py-6 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
               <Book className="mr-3 h-6 w-6" />
               Get Started Now
               <ArrowRight className="ml-3 h-6 w-6" />
-            </Button>
+            </Button></Link>
+              <Link to="/docs/apis">
+
             <Button variant="outline" size="lg" className="text-lg px-10 py-6 border-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-all duration-300 flex items-center justify-center">
               <Code className="mr-3 h-6 w-6" />
               API Reference
             </Button>
+            </Link>
             <Button variant="ghost" size="lg" className="text-lg px-6 py-6 hover:bg-primary/5 transition-all duration-300 flex items-center justify-center">
               <PlayCircle className="mr-2 h-6 w-6" />
               Watch Demo
