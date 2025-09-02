@@ -15,7 +15,7 @@ import { IdmetaProducts } from "./pages/docs/IdmetaProducts";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Documentation from "./components/docs/Documentation";
-
+import "./index.css"
 const queryClient = new QueryClient();
 
 const App = () => (
