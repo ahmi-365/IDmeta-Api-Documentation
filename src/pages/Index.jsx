@@ -222,7 +222,7 @@ const Index = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16">
-              <Link to="/docs/general/get-started">
+              <Link to="/newdocumentation">
 
             <Button size="lg" className="text-lg px-10 py-6 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
               <Book className="mr-3 h-6 w-6" />

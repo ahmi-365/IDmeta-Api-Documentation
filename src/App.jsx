@@ -14,6 +14,7 @@ import { Troubleshooting } from "./pages/docs/Troubleshooting";
 import { IdmetaProducts } from "./pages/docs/IdmetaProducts";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Documentation from "./components/docs/Documentation";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          <Route path="/newdocumentation" element={<Documentation />} />
+
           <Route path="/" element={<Index />} />
           <Route path="/docs" element={<DocsLayout />}>
             <Route path="general/get-started" element={<GeneralGetStarted />} />
