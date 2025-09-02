@@ -104,8 +104,8 @@ export default function DynamicDocumentationCards() {
       <div className="relative z-10 flex items-center justify-center min-h-screen px-6">
         <div className={`text-center max-w-7xl mx-auto py-20 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <p className="text-lg sm:text-2xl text-muted-foreground mb-8 sm:mb-12 leading-relaxed max-w-4xl mx-auto">
-            This is the Documentation File of the
-            <span className="text-primary font-semibold"> Documentation API.</span>
+            This is the Documentation File of the 
+            <span className="text-primary font-semibold"><a href="/"> Documentation API.</a> </span>
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -150,16 +150,19 @@ export default function DynamicDocumentationCards() {
                     </div>
                   </div>
 
-                  {/* ===== Hover modal (rendered INSIDE the card so it doesn't trigger leave) ===== */}
-                  {/* ===== Hover modal ===== */}
-                  <div
-                    className={`absolute top-full left-1/2 mt-3 transform -translate-x-1/2 w-80 p-4 bg-white rounded-lg shadow-lg transition-all duration-300 ease-out z-50
-    ${hoveredCardId === card.id ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <h4 className="text-lg font-semibold">{card.title}</h4>
-                    <p className="text-sm text-gray-600 mt-2">{card.longDesc}</p>
-                  </div>
+
+    <div
+  className={`absolute left-1/2 top-full transform -translate-x-1/2 w-80 p-4 bg-white rounded-lg shadow-lg transition-all duration-500 ease-out 
+    ${hoveredCardId === card.id
+      ? 'opacity-100 translate-y-2 z-[9999]'
+      : 'opacity-0 -translate-y-5 pointer-events-none z-0'}`}
+>
+  <h4 className="text-lg font-semibold">{card.title}</h4>
+  <p className="text-sm text-gray-600 mt-2">{card.longDesc}</p>
+</div>
+
+
+
 
 
                 </div>
