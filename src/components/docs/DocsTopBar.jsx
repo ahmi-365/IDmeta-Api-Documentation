@@ -41,7 +41,7 @@ export const DocsTopBar = () => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape" && isSearching) closeSearch();
-      if (e.key === "/" && (e.ctrlKey || e.metaKey)) {
+      if (e.key === "k" && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
         if (inputRef.current) inputRef.current.focus();
       }
@@ -85,7 +85,7 @@ export const DocsTopBar = () => {
             <Input
               ref={inputRef}
               type="text"
-              placeholder="Search documentation... (Ctrl+/)"
+              placeholder="Search documentation... (Ctrl+k)"
               className="pl-10 pr-4 transition-all duration-200 w-full"
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
@@ -104,18 +104,7 @@ export const DocsTopBar = () => {
         </div>
 
         {/* Get Started Button */}
-        <div className={cn(
-          "items-center space-x-2 md:flex",
-          hideOnMobile ? "hidden sm:flex" : "flex"
-        )}>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
-          >
-            Get Started
-          </Button>
-        </div>
+       
       </div>
     </header>
   );
