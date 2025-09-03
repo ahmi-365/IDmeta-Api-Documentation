@@ -1,63 +1,79 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { BookOpen, ArrowRight, Code, Zap, Shield, Users, GitBranch, Rocket } from 'lucide-react';
+import { BookOpen, 
+  Rocket, 
+
+  ShieldCheck, 
+  Smartphone, 
+  Monitor, 
+  GitBranch,  
+  Workflow,
+  ArrowRight} from 'lucide-react';
 import { sidebarItems } from "../../config/docs-nav";
 const cards = [
   {
     id: 1,
     title: "Introduction",
     desc: "Fast, reliable, and easy API documentation.",
-    icon: Rocket,
+    icon: BookOpen,   // 📖
     color: "text-blue-600",
-    link: sidebarItems[0]?.children?.[0]?.path,
+    bgColor: "bg-blue-100",
+    link: "/docs/general/get-started",   // from sidebarItems[0].children[0]
     longDesc: "Longer details and examples about the Introduction section. Put code snippets, examples or extended text here."
   },
   {
     id: 2,
     title: "Trust Flows",
     desc: "Flow of credibility and reliable authority.",
-    icon: Code,
+    icon: Workflow,   // 🔀
     color: "text-purple-600",
-    link: sidebarItems[0]?.children?.[1]?.path,
+    bgColor: "bg-purple-100",
+    link: "/docs/trust-flows",   // from sidebarItems[4]
     longDesc: "Extended explanation of Trust Flows with more examples."
   },
   {
     id: 3,
-    title: "Trust Values",
-    desc: "Beliefs guiding reliability in every interaction.",
-    icon: Zap,
+    title: "Trust Validation",
+    desc: "Validate identity, build trust across every interaction.",
+    icon: ShieldCheck,  // ✅
     color: "text-amber-600",
-    link: sidebarItems[0]?.children?.[2]?.path,
+    bgColor: "bg-amber-100",
+    link: "/docs/Trustvalidation",   // from sidebarItems[5]
     longDesc: "Details and examples for Trust Values."
   },
   {
     id: 4,
-    title: "ID Meta APIs",
+    title: "IDmeta APIs",
     desc: "Powering identity solutions through advanced APIs.",
-    icon: Shield,
+    icon: Rocket,   // 🚀
     color: "text-green-600",
-    link: sidebarItems[1]?.path,
+    bgColor: "bg-green-100",
+    link: "/docs/apis",   // from sidebarItems[1]
     longDesc: "Longer description for ID Meta APIs."
   },
   {
     id: 5,
     title: "Mobile and Web SDK",
     desc: "Build faster with cross-platform mobile and web SDKs.",
-    icon: Users,
+    icon: Smartphone,   // 📱
     color: "text-red-600",
-    link: sidebarItems[2]?.path,
+    bgColor: "bg-red-100",
+    link: "/docs/sdk",   // from sidebarItems[3]
     longDesc: "Details and guides for SDK usage."
   },
   {
     id: 6,
-    title: "Web Book",
-    desc: "One-stop digital book for mastering web.",
-    icon: GitBranch,
+    title: "Webhooks",
+    desc: "Real-time data sync, lightweight webhook delivery.",
+    icon: GitBranch,   // 🌿
     color: "text-indigo-600",
-    link: sidebarItems[3]?.path,
+    bgColor: "bg-indigo-100",
+    link: "/docs/webhooks",   // from sidebarItems[2]
     longDesc: "A long-form digital book explanation."
   },
 ];
+
 
 export default function DynamicDocumentationCards() {
   const [isVisible, setIsVisible] = useState(false);
@@ -72,7 +88,6 @@ export default function DynamicDocumentationCards() {
       if (closeTimer.current) clearTimeout(closeTimer.current);
     };
   }, []);
-
   // helper: open immediately, cancel any pending close
   const handleEnter = (id) => {
     if (closeTimer.current) {
@@ -81,7 +96,6 @@ export default function DynamicDocumentationCards() {
     }
     setHoveredCardId(id);
   };
-
   // helper: set a short delay before closing (smoothness)
   const handleLeave = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -93,19 +107,19 @@ export default function DynamicDocumentationCards() {
 
   return (
     <div className="min-h-screen bg-white relative overflow-visible">
-
       {/* ... your animated background and floating things unchanged ... */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-purple-50/30">
         <div className="absolute top-20 left-20 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-20 w-[500px] h-[500px] bg-purple-100/40 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }}></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-cyan-50/40 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "4s" }}></div>
       </div>
-
       <div className="relative z-10 flex items-center justify-center min-h-screen px-6">
         <div className={`text-center max-w-7xl mx-auto py-20 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <p className="text-lg sm:text-2xl text-muted-foreground mb-8 sm:mb-12 leading-relaxed max-w-4xl mx-auto">
-            This is the Documentation File of the 
-            <span className="text-primary font-semibold"><a href="/"> Documentation API.</a> </span>
+          <p className="text-lg sm:text-3xl text-muted-foreground mb-8 sm:mb-12 leading-relaxed max-w-4xl mx-auto">
+            This is the Documentation File of the
+            <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent ml-0 sm:ml-3">
+              <Link to="/"> Documentation API.</Link>
+            </span>
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -127,8 +141,6 @@ export default function DynamicDocumentationCards() {
                     height: '120px'
                   }}
                 >
-
-
                   <div className="relative z-10 flex h-full items-center">
                     <div className="flex-shrink-0 w-28 h-28 flex items-center justify-center relative">
                       <div className="absolute w-28 h-28 bg-gradient-to-br from-gray-50 to-gray-100 rounded-full border border-gray-200"></div>
@@ -137,7 +149,6 @@ export default function DynamicDocumentationCards() {
                         <Icon className={`h-7 w-7 ${card.color}`} />
                       </div>
                     </div>
-
                     <div className="flex-1 px-6 py-4 flex flex-col justify-center relative">
                       <div className="relative z-10">
                         <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -148,23 +159,35 @@ export default function DynamicDocumentationCards() {
                         </p>
                       </div>
                     </div>
+                    {/* ✅ Arrow shows only when hovered */}
+
+                    <div
+                      className={`absolute bottom-2 right-3 transition-all duration-700 ease-out
+                         ${hoveredCardId === card.id
+                          ? "opacity-100 translate-x-0"
+                          : "opacity-0 -translate-x-5"}`}
+                    >
+                      <div className={`w-10 h-10 flex items-center justify-center rounded-full ${card.bgColor} shadow-md`}>
+                        <ArrowRight className={`w-5 h-5 ${card.color}`} />
+                      </div>
+
+                    </div>
+
+
+
+
+
+
                   </div>
-
-
-    <div
-  className={`absolute left-1/2 top-full transform -translate-x-1/2 w-80 p-4 bg-white rounded-lg shadow-lg transition-all duration-500 ease-out 
-    ${hoveredCardId === card.id
-      ? 'opacity-100 translate-y-2 z-[9999]'
-      : 'opacity-0 -translate-y-5 pointer-events-none z-0'}`}
->
-  <h4 className="text-lg font-semibold">{card.title}</h4>
-  <p className="text-sm text-gray-600 mt-2">{card.longDesc}</p>
-</div>
-
-
-
-
-
+                  {/* <div
+                      className={`absolute left-1/2 top-full transform -translate-x-1/2 w-80 p-4 bg-white rounded-lg shadow-lg transition-all duration-500 ease-out 
+                        ${hoveredCardId === card.id
+                          ? 'opacity-100 translate-y-2 z-[9999]'
+                          : 'opacity-0 -translate-y-5 pointer-events-none z-0'}`}
+                    >
+                      <h4 className="text-lg font-semibold">{card.title}</h4>
+                      <p className="text-sm text-gray-600 mt-2">{card.longDesc}</p>
+                    </div> */}
                 </div>
               );
             })}

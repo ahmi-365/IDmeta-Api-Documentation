@@ -9,9 +9,9 @@ import { GeneralCommandLine } from "./pages/docs/GeneralCommandLine";
 import { GeneralDevelopment } from "./pages/docs/GeneralDevelopment";
 import { IdmetaAPIs } from "./pages/docs/IdmetaAPIs";
 import { Webhooks } from "./pages/docs/Webhooks";
-import { FraudPrevention } from "./pages/docs/FraudPrevention";
-import { Troubleshooting } from "./pages/docs/Troubleshooting";
-import { IdmetaProducts } from "./pages/docs/IdmetaProducts";
+import {  SDK } from "./pages/docs/SDK";
+import { TrustFlows } from "./pages/docs/TrustFlows";
+import { Trustvalidation } from "./pages/docs/Trustvalidation";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Documentation from "./components/docs/Documentation";
@@ -25,7 +25,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/newdocumentation" element={<Documentation />} />
+          <Route path="/Starter" element={<Documentation />} />
 
           <Route path="/" element={<Index />} />
           <Route path="/docs" element={<DocsLayout />}>
@@ -40,9 +40,12 @@ const App = () => (
             />
             <Route path="apis" element={<IdmetaAPIs />} />
             <Route path="webhooks" element={<Webhooks />} />
-            <Route path="fraud-prevention" element={<FraudPrevention />} />
-            <Route path="troubleshooting" element={<Troubleshooting />} />
-            <Route path="products" element={<IdmetaProducts />} />
+            <Route path="sdk" element={<SDK />} />
+            
+            <Route path="trust-flows" element={<TrustFlows />} />
+
+
+            <Route path="Trustvalidation" element={<Trustvalidation />} />
             <Route index element={<GeneralGetStarted />} />
           </Route>
           <Route path="*" element={<NotFound />} />

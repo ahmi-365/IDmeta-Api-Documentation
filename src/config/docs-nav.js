@@ -4,6 +4,9 @@ import {
   Shield,
   HelpCircle,
   Layers,
+  Smartphone,
+  Workflow,
+  ShieldCheck
 } from "lucide-react";
 export const getFlatNavItems = (items = sidebarItems) => {
   const flatItems = [];
@@ -51,18 +54,19 @@ export const sidebarItems = [
     icon: Layers,
   },
   {
-    title: "Preventing Fraud",
-    path: "/docs/fraud-prevention",
-    icon: Shield,
+    title: "Mobile and Web SDK",
+    path: "/docs/sdk",
+    icon: Smartphone,
   },
   {
-    title: "Troubleshooting and Security",
-    path: "/docs/troubleshooting",
-    icon: HelpCircle,
-  },
+  title: "Trust Flows",
+  path: "/docs/trust-flows",
+  icon: Workflow,
+},
+
   {
-    title: "Idmeta Products",
-    path: "/docs/products",
-    icon: Layers,
+    title: "Trust Validation",
+    path: "/docs/Trustvalidation",
+    icon: ShieldCheck,
   },
 ];

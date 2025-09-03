@@ -1,6 +1,6 @@
-import { fraudPreventionData } from '@/data/fraudPreventionData';
-export const FraudPrevention = () => {
-  const { title, subtitle, alert, sections } = fraudPreventionData;
+import { SDkData } from '@/data/SDKdata';
+export const SDK = () => {
+  const { title, subtitle, alert, sections } = SDkData;
 
   return (
     <div className="prose prose-slate max-w-none">

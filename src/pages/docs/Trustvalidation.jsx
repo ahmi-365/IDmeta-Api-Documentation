@@ -1,8 +1,8 @@
 import React from "react";
-import { idmetaProductsData } from "@/data/idmetaProductsData";
+import { Trustvalidationdata } from "@/data/Trustvalidationdata";
 
-export const IdmetaProducts = () => {
-  const { title, subtitle, sections } = idmetaProductsData;
+export const Trustvalidation = () => {
+  const { title, subtitle, sections } = Trustvalidationdata;
 
   return (
     <div className="prose prose-slate max-w-none">
