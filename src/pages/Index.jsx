@@ -216,7 +216,7 @@ const Index = () => {
 
           <p className="text-lg sm:text-2xl text-muted-foreground mb-8 sm:mb-12 leading-relaxed max-w-4xl mx-auto">
             Build powerful communication experiences with comprehensive guides, 
-            <span className="text-primary font-semibold"> interactive examples</span>, and 
+            <span className="text-primary font-semibold cursor-pointer"> interactive examples</span>, and 
             world-class developer tools. Trusted by over 100,000 developers worldwide.
           </p>
 

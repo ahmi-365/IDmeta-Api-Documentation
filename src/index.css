@@ -176,7 +176,7 @@ All colors MUST be HSL.
     @apply flex items-center px-3 py-2 text-sm rounded-md transition-all duration-200 hover:bg-accent;
   }
 
-  .sidebar-nav-item.active {
+  .sidebar-nav-item.` {
     @apply bg-primary/10 text-primary font-medium;
   }
 
@@ -192,3 +192,13 @@ All colors MUST be HSL.
     @apply bg-yellow-200 dark:bg-yellow-800;
   }
 }
+.sidebar-nav-item {
+  @apply flex items-center px-3 py-2 rounded-xl text-sm text-muted-foreground 
+         hover:bg-accent hover:text-foreground transition;
+}
+.sidebar-nav-item.active {
+  @apply bg-accent text-foreground font-medium;
+}
+
+
+

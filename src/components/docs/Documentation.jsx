@@ -52,16 +52,17 @@ const cards = [
     link: "/docs/apis",   // from sidebarItems[1]
     longDesc: "Longer description for ID Meta APIs."
   },
-  {
-    id: 5,
-    title: "Mobile and Web SDK",
-    desc: "Build faster with cross-platform mobile and web SDKs.",
-    icon: Smartphone,   // 📱
-    color: "text-red-600",
-    bgColor: "bg-red-100",
-    link: "/docs/sdk",   // from sidebarItems[3]
-    longDesc: "Details and guides for SDK usage."
-  },
+ {
+  id: 5,
+  title: "Mobile and Web SDK",
+  desc: "Build faster with cross-platform mobile and web SDKs.",
+  icon: Smartphone,   // 📱
+  color: "text-red-600",
+  bgColor: "bg-red-100",
+  link: "/docs/sdk/mobile/flutter",   // ✅ absolute path (matches sidebarItems)
+  longDesc: "Details and guides for SDK usage."
+},
+
   {
     id: 6,
     title: "Webhooks",
