@@ -177,7 +177,6 @@ export default function DynamicDocumentationCards() {
 
 
 
-
                   </div>
                   {/* <div
                       className={`absolute left-1/2 top-full transform -translate-x-1/2 w-80 p-4 bg-white rounded-lg shadow-lg transition-all duration-500 ease-out 
