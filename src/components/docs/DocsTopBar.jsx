@@ -77,7 +77,7 @@ export const DocsTopBar = () => {
             <Input
               ref={inputRef}
               type="text"
-              placeholder="Search documentation... (Ctrl+/)"
+              placeholder="Search guides, SDKs, and examples... (Ctrl+/)"
               className={cn(
                 "pl-10 pr-4 w-full",
                 "rounded-full border border-border",
@@ -103,14 +103,7 @@ export const DocsTopBar = () => {
           )}
         </div>
 
-        {/* Get Started Button (Right Side) */}
-        <Button
-          variant="outline"
-          size="sm"
-          className="hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
-        >
-          Get Started
-        </Button>
+        
       </div>
     </header>
 

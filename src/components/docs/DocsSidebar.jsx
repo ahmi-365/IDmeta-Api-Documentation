@@ -60,19 +60,43 @@ export const DocsSidebar = React.memo(() => {
             {hasChildren ? (
               <button
                 onClick={() => toggleExpanded(item.title)}
-                className="sidebar-nav-item w-full justify-between"
-                style={{ paddingLeft: `${level * 16}px` }} // indent by level
+                className={cn(
+                  "sidebar-nav-item w-full justify-between rounded-lg px-3 py-2.5 transition-all duration-200 ease-in-out",
+                  "text-slate-700 hover:text-[#3BAEE3] hover:bg-gradient-to-r hover:from-[#3BAEE3]/5 hover:to-[#3BAEE3]/10",
+                  "hover:shadow-sm hover:border-l-2 hover:border-[#3BAEE3]/30",
+                  "group focus:outline-none focus:ring-2 focus:ring-[#3BAEE3]/20 focus:ring-offset-1",
+                  // Active/expanded state
+                  expanded && [
+                    "bg-gradient-to-r from-[#3BAEE3]/10 to-[#3BAEE3]/5",
+                    "text-[#3BAEE3] border-l-2 border-[#3BAEE3]",
+                    "shadow-sm"
+                  ],
+                  // Level-based left padding
+                  level === 0 && "font-medium",
+                  level > 0 && "text-sm font-normal"
+                )}
+                style={{ 
+                  paddingLeft: `${12 + (level * 20)}px`,
+                  marginLeft: level > 0 ? '8px' : '0'
+                }}
                 aria-expanded={expanded}
                 aria-controls={`sidebar-${item.title.replace(/\s+/g, "-").toLowerCase()}`}
               >
                 <div className="flex items-center space-x-3">
-                  {item.icon && <item.icon className="h-4 w-4 flex-shrink-0" />}
-                  <span className="truncate">{item.title}</span>
+                  {item.icon && (
+                    <item.icon className={cn(
+                      "h-4 w-4 flex-shrink-0 transition-colors duration-200",
+                      "text-slate-500 group-hover:text-[#3BAEE3]",
+                      expanded && "text-[#3BAEE3]"
+                    )} />
+                  )}
+                  <span className="truncate font-medium">{item.title}</span>
                 </div>
                 <ChevronRight
                   className={cn(
-                    "h-4 w-4 flex-shrink-0 transform transition-transform duration-300 ease-in-out",
-                    expanded && "rotate-90"
+                    "h-4 w-4 flex-shrink-0 transform transition-all duration-300 ease-in-out",
+                    "text-slate-400 group-hover:text-[#3BAEE3]",
+                    expanded && "rotate-90 text-[#3BAEE3]"
                   )}
                 />
               </button>
@@ -80,18 +104,37 @@ export const DocsSidebar = React.memo(() => {
               <Link
                 to={item.path || "#"}
                 className={cn(
-                  "sidebar-nav-item w-full justify-start",
-                  item.path && isActive(item.path) && "active"
+                  "sidebar-nav-item w-full justify-start rounded-lg px-3 py-2.5 transition-all duration-200 ease-in-out",
+                  "text-slate-700 hover:text-[#3BAEE3] hover:bg-gradient-to-r hover:from-[#3BAEE3]/5 hover:to-[#3BAEE3]/10",
+                  "hover:shadow-sm hover:border-l-2 hover:border-[#3BAEE3]/30",
+                  "group focus:outline-none focus:ring-2 focus:ring-[#3BAEE3]/20 focus:ring-offset-1",
+                  // Active state
+                  item.path && isActive(item.path) && [
+                    "bg-gradient-to-r from-[#3BAEE3]/15 to-[#3BAEE3]/8",
+                    "text-[#3BAEE3] border-l-3 border-[#3BAEE3]",
+                    "shadow-md font-medium"
+                  ],
+                  // Level-based styling
+                  level === 0 && "font-medium",
+                  level > 0 && "text-sm font-normal"
                 )}
-                style={{ paddingLeft: `${level * 16}px` }} // indent by level
+                style={{ 
+                  paddingLeft: `${12 + (level * 20)}px`,
+                  marginLeft: level > 0 ? '8px' : '0'
+                }}
               >
                 <div className="flex items-center space-x-3">
-                  {item.icon && <item.icon className="h-4 w-4 flex-shrink-0" />}
+                  {item.icon && (
+                    <item.icon className={cn(
+                      "h-4 w-4 flex-shrink-0 transition-colors duration-200",
+                      "text-slate-500 group-hover:text-[#3BAEE3]",
+                      item.path && isActive(item.path) && "text-[#3BAEE3]"
+                    )} />
+                  )}
                   <span className="truncate">{item.title}</span>
                 </div>
               </Link>
             )}
-
 
             {hasChildren && (
               <div
@@ -102,7 +145,11 @@ export const DocsSidebar = React.memo(() => {
                 )}
                 id={`sidebar-${item.title.replace(/\s+/g, "-").toLowerCase()}`}
               >
-                {renderItems(item.children, level + 1)}
+                <div className="relative">
+                  {/* Subtle connection line for nested items */}
+                  <div className="absolute left-5 top-0 bottom-0 w-px bg-slate-200/60" />
+                  {renderItems(item.children, level + 1)}
+                </div>
               </div>
             )}
           </div>
@@ -114,10 +161,16 @@ export const DocsSidebar = React.memo(() => {
   const memoizedItems = useMemo(() => renderItems(sidebarItems), [renderItems]);
 
   return (
-    <nav className="h-full overflow-y-auto py-6 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent">
-      <div className="px-4 space-y-1">{memoizedItems}</div>
-    </nav>
-  );
+  <nav className="h-full overflow-y-auto py-6 scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent hover:scrollbar-thumb-slate-400">
+    <div className="px-4 space-y-2">
+      {/* ✅ Removed the top line */}
+      <div className="space-y-1">
+        {memoizedItems}
+      </div>
+    </div>
+  </nav>
+);
+
 });
 
 DocsSidebar.displayName = "DocsSidebar";

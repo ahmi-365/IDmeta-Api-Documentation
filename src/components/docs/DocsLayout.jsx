@@ -5,6 +5,8 @@ import { DocsSidebar } from "./DocsSidebar";
 import { DocsFooter } from "./DocsFooter";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ScrollToTopButton } from "./ScrollToTopButton";
+import { ScrollToTop } from "./ScrollToTop";
 
 export const DocsLayout = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -33,6 +35,7 @@ export const DocsLayout = () => {
         </aside>
 
         <div className="relative">
+          <ScrollToTop />
           <Button
             variant="outline"
             size="sm"
@@ -63,6 +66,7 @@ export const DocsLayout = () => {
               <Outlet />
             </article>
             <DocsFooter />
+            <ScrollToTopButton />
           </div>
         </main>
       </div>
